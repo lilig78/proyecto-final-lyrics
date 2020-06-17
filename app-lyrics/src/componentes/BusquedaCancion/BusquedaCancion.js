@@ -8,12 +8,23 @@ import axios from 'axios';
 const BusquedaCancion = () => {
     const endpoint ='http://api.musixmatch.com/ws/1.1/track.search?';
     const API_KEY = 'fa9bf33f5d2010c8d6909b728684095b'; 
+    const [nuevaCancion,setNuevaCancion] = useState("");
 
 
     useEffect(() => {
-        console.log('Componente');
+        axios.get(`${endpoint}API_KEY=${API_KEY}&q_lyrics=${nuevaCancion}`)
+        .then(({data}) => {
+           setNuevaCancion(data);
+        })
+
+
     },[]);
-};
+
+
+
+  
+
+        };
 
 
 
