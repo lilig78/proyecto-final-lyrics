@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 
-import BusquedaCancion from './componentes/BusquedaCancion/BusquedaCancion'
+import BusquedaCancion from './components/BusquedaCancion/BusquedaCancion'
 import './App.css';
 
 
