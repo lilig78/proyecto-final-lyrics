@@ -3,7 +3,7 @@ import React from 'react';
 const Navbar = () => {
     return(
         <nav className="navbar navbar-light" style={{backgroundColor: '#e3f2fd'}} >
-            <a className="navbar-brand" href="#">TO DO LIST</a>
+            <a className="navbar-brand" href="#">HISTORIA DE CANCIONES</a>
         </nav>
     );
 };

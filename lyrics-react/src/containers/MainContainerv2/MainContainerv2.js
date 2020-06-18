@@ -3,7 +3,7 @@ import Navbar from './../../components/Navbar/Navbar';
 import TaskManager from './../../components/TaskManager/TaskManager';
 
 
-function MainContainer() {
+function MainContainerv2() {
   return (<>
       <Navbar/>
       <TaskManager/>
@@ -11,4 +11,4 @@ function MainContainer() {
   );
 }
 
-export default MainContainer;
+export default MainContainerv2;

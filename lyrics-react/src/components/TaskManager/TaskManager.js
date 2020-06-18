@@ -9,7 +9,7 @@ const TaskManager = () => {
     // Iterar objeto, usabamos Object.keys(tasks) que me devolvia un arreglo.
     
     const getTasks = () => {
-        axios.get('https://primercintaroja.firebaseio.com//task.json')
+        axios.get('https://primercintaroja.firebaseio.com/task.json')
         .then(({data})=>{
             setTasks(data);
         })
@@ -23,8 +23,8 @@ const TaskManager = () => {
     return (
         <div className="card">
             <div className="card-body">
-                <h5 className="card-title">Mis tareas</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Por hacer</h6>
+                <h5 className="card-title">Mis Canciones</h5>
+                <h6 className="card-subtitle mb-2 text-muted">Escuchar</h6>
                 {
                     Object.keys(tasks)
                     .map((id) => <Task
@@ -40,7 +40,7 @@ const TaskManager = () => {
                 }
             </div>
             {/*<a href></a> */}
-            <Link to="/create">Crear tarea.</Link>
+            <Link to="/create">Buscar Cancion.</Link>
         </div>
     );
 };

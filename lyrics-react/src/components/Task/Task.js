@@ -25,7 +25,7 @@ const Task = ({ id, artist, ranking, done, lyrics, songtittle, gT }) => {
 
   return (
     <div className="card">
-        <h4><span className="badge badge-primary">{ranking}</span> {artist} ///// {songtittle}.</h4>
+        <h4><span className="badge badge-primary">{ranking}</span> {artist}  {songtittle}.</h4>
         <div className="form-check">
           <input
           className="form-check-input" 
@@ -38,11 +38,11 @@ const Task = ({ id, artist, ranking, done, lyrics, songtittle, gT }) => {
             Realizado es {lyrics} horas.
           </label> */}
           <button type="button" onClick={() => {
-            alert('Se eliminó la tarea', id);
+            alert('Se eliminó la Cancion', id);
             eliminar();
           }} className="btn btn-danger">Eliminar</button>
         </div>
-        <span>{lyrics}</span>
+        {lyrics}
         
     </div>
   );

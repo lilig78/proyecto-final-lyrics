@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // function getNameById () {
@@ -61,7 +62,7 @@ const NewTask = () => {
                 body.lyrics = lyrics1;
                 axios.post('https://primercintaroja.firebaseio.com/task.json', body)
                 .then(({ data }) => {
-                    alert('Tarea Creada');
+                    alert('Cancion ingresada');
                     history.push("/");
                 })
                 .catch(()=> {
@@ -177,7 +178,7 @@ const NewTask = () => {
     
     return(
     <div className="card">
-        <h4>Crea una nueva tarea</h4>
+        <h4>Busca una nueva Cancion</h4>
         <div class="form-group">
             <label htmlFor="title">Ingrese nombre de artista:</label>
             <input type="text" value={artist} class="form-control" onChange={handleArtist} id="title"/>
@@ -193,10 +194,15 @@ const NewTask = () => {
             <input type="text" value={songtittle} class="form-control" onChange={handleTittle} id="songtittle"/>
         </div>
         <button type="button" onClick={()=>{createTask()}} class="btn btn-primary">Crear</button>
-        <button type="button" onClick={()=>{FindLyrics()}} class="btn btn-primary">test</button>
-        <button type="button" onClick={()=>{history.push("/")}} class="btn btn-secondary">Regresar</button>
+        {/* <button type="button" onClick={()=>{FindLyrics()}} class="btn btn-primary">test</button> */}
+        {/* <button type="button" onClick={()=>{history.push("/")}} class="btn btn-secondary">Regresar</button> */}
+
+        <Link to="/historial"> Ver Historial</Link>
+        <Link to="/"> Regresar a Inicio</Link>
+
 
     { error ? <h1 class="text-danger">{error}</h1>: ''}
+
     </div>)
 };
 

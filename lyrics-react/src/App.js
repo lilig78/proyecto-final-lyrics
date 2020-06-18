@@ -5,23 +5,24 @@ import {
   Switch,
 } from "react-router-dom";
 
-import IndexMenu from './containers/Index/Index';
+
 import MainContainerv2 from './containers/MainContainerv2/MainContainerv2';
 import TaskContainer from './containers/TaskContainer/TaskContainer';
 import Container404 from './containers/Container404/Container404'
 import Lyrics from './containers/LyricsFind/LyricsFind'
+import Inicio from './containers/Inicio/Inicio';
 
 function App() {
   return (
     <Router>
       <Switch>
-          <Route exact path="/create2">
-            <IndexMenu/>
-          </Route>
+          <Route exact path="/">
+            <Inicio/>
+          </Route> 
           <Route exact path="/test">
             <Lyrics/>
           </Route>
-          <Route exact path="/">
+          <Route exact path="/historial">
             <MainContainerv2/>
           </Route>
           <Route path="/create">
