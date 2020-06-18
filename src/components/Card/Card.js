@@ -1,0 +1,17 @@
+import React from 'react'
+
+const Card = (props) => {
+    return (
+        <div  className="col-4">
+            <div  className="card">
+                <img src={props.img} class="card-img-top" alt="..."/>
+                <div className="card-body">
+                    <h5 className="card-title">{props.titulo}</h5>
+                    <a href="{props.url}" className="btn btn-primary">Ver detalle</a>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Card;
