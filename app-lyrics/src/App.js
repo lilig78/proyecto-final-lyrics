@@ -5,35 +5,32 @@ import Card from './components/Card/Card';
 //HTTP Request => que devuelve una promesa
 import axios from 'axios';
 import './App.css';
-
-
-
 function App() {
   //VARIABLES
   const [textoCancion, setTextoCancion] = useState();
   const [nomCancion, setNombreCancion] = useState([]);
-
+  const requerimiento ='https://cors-anywhere.herokuapp.com/';
   const endpoint ='https://api.musixmatch.com/ws/1.1/';
   const apikey ='fa9bf33f5d2010c8d6909b728684095b';
-
   const handleChange = (event) => { /* se ejecuta cada vez que se hace cambios*/
     setTextoCancion(event.target.value); /* para que reconozca los cambios ingresados */
   }
-
   useEffect(() => {
     console.log('mi componente se montó');
   }, []); /* , si está vacío se va a ejecutar cuando el componente se ponga */
-
   /* https://api.musixmatch.com/ws/1.1/track.search?q_track=gasolina&apikey=fa9bf33f5d2010c8d6909b728684095b */
-
   useEffect(() => { /* es importante para hacer una peticion antes que cargue el componente */
     console.log('el valor de textoCancion cambió');
-    axios.get('https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=gasolina&apikey=fa9bf33f5d2010c8d6909b728684095b') /* `${endpoint}track.search?q_track=${textoCancion}&apikey=${apikey} ` */
-    .then((info) => console.log(info)) /* setNombreCancion(info.objeto) */
+
+    /* https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=gasolina&apikey=fa9bf33f5d2010c8d6909b728684095b */
+    axios.get(`${requerimiento}${endpoint}track.search?q_track=${textoCancion}&apikey=${apikey} `) /* `${endpoint}track.search?q_track=${textoCancion}&apikey=${apikey} ` */
+    .then((info) => setNombreCancion(info.track_list) ) /* console.log(info.track_list) */
     .catch(() => alert("ocurrió un error"))
   }, [textoCancion]); /* , si está vacío se va a ejecutar cuando el componente se ponga */
+  
 
-function App() {
+
+
   return (
     <section>
       <h1 className="text-center">Busca tu canción 🎵</h1>
@@ -46,19 +43,18 @@ function App() {
           <input type="text" className="form-control"  onChange={handleChange} /> {/*handleChange se dispara el evento cada que se realice un cambio */}
         </div>
         <div className="row">
-          <Card img="imagen" />
-          <Card img="imagen" />
-          <Card img="imagen" />
 
+
+        {/* {nomCancion.map(( nomCancion) => <Card nombre={nomCancion.title}  />)} */}
+          <Card img="imagen" />
         </div>
       </div>
       <FiltroCancion />
       <FiltroCancion />
       <Cancion nombre="gasolina" album="Barrio Fino" cantante="Daddy Yankee" />
       <Cancion nombre="Camisa negra" album="Mi Sangre" cantante="Juanes" />
-
     </section>
   );
 }
-
 export default App;
+
