@@ -12,7 +12,7 @@ function App() {
   //VARIABLES
   const [textoCancion, setTextoCancion] = useState();
   const [nomCancion, setNombreCancion] = useState([]);
-
+  const requerimiento ='https://cors-anywhere.herokuapp.com/';
   const endpoint ='https://api.musixmatch.com/ws/1.1/';
   const apikey ='fa9bf33f5d2010c8d6909b728684095b';
 
@@ -28,14 +28,15 @@ function App() {
 
   useEffect(() => { /* es importante para hacer una peticion antes que cargue el componente */
     console.log('el valor de textoCancion cambió');
-    axios.get('https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=gasolina&apikey=fa9bf33f5d2010c8d6909b728684095b') /* `${endpoint}track.search?q_track=${textoCancion}&apikey=${apikey} ` */
-    .then((info) => console.log(info)) /* setNombreCancion(info.objeto) */
-    .catch(() => alert("ocurrió un error"))
+    /* https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=gasolina&apikey=fa9bf33f5d2010c8d6909b728684095b */
+    axios.get(`${requerimiento}${endpoint}track.search?q_track=${textoCancion}&apikey=${apikey} `) /* `${endpoint}track.search?q_track=${textoCancion}&apikey=${apikey} ` */
+    .then((info) => setNombreCancion(info.data.message.body.track_list)  ) /* console.log(info.track_list) setNombreCancion(info.message.body) */ /* .then((info) => console.log(info)  ) para traer la data */
+    .catch(() => alert("ocurrió un error")) /* () => alert("ocurrió un error") */
   }, [textoCancion]); /* , si está vacío se va a ejecutar cuando el componente se ponga */
 
   return (
     <section>
-      <h1 className="text-center">Busca tu canción 🎵</h1>
+      <h1 className="text-center">Canciones 🎵</h1>
       <div className="container">
         <div className="input-group input-group-lg">
           <div className="input-group-prepend">
@@ -45,9 +46,10 @@ function App() {
           <input type="text" className="form-control"  onChange={handleChange} /> {/*handleChange se dispara el evento cada que se realice un cambio */}
         </div>
         <div className="row">
+         {/* {nomCancion.map(( cancion) => <Cancion nombre={cancion.nombre} album="Barrio Fino" cantante="Daddy Yankee" />)}  */}
+         {nomCancion.map((cancion) => <Cancion nombre={cancion.track.track_name} album={cancion.track.album_name} cantante={cancion.track.artist_name} />)}
           <Card img="imagen" />
-          <Card img="imagen" />
-          <Card img="imagen" />
+
 
         </div>
       </div>
