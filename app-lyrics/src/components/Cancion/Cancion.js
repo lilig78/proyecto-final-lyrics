@@ -6,9 +6,9 @@ const FiltroCancion = (props) => { // props se usa como un objeto y .para llamar
 
     return (
         <div>
-            <h1>Nombre: {props.nombre}</h1>
-            <h3>Album: {props.album}</h3>
-            <h3>Cantante: {props.cantante}</h3>
+            <h4>Nombre: {props.nombre}</h4>
+            <p>Album: {props.album}</p>
+            <p>Cantante: {props.cantante}</p>
 
             <p>{song}</p>
             {/* comentar  Shift + Alt + A */}
