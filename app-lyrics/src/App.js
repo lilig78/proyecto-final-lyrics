@@ -1,7 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
+
+
 import BusquedaCancion from './componentes/BusquedaCancion/BusquedaCancion'
 import './App.css';
+
 
 function App() {
   return (

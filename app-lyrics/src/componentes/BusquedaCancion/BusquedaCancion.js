@@ -21,10 +21,36 @@ const BusquedaCancion = () => {
     },[]);
 
 
+    return (
+        <div className="card">
+            <div className="card-body">
+                <h5 className="card-title">Mi Busqueda de Canciones</h5>
+                <h6 className="card-subtitle mb-2 text-muted">Canciones</h6>
+                {
+                    Object.keys(tasks)
+                    .map((id) => <Task
+                    gT={getTasks}
+                    key={id}
+                    artist={tasks[id].artist} 
+                    ranking={tasks[id].ranking}
+                    done={tasks[id].isDone}
+                    q_lyrics={tasks[id].q_lyrics}
+                    songtittle={tasks[id].songtittle}
+                    id={id}
+                    />)
+                }
+            </div>
+            {/*<a href></a> */}
+            <Link to="/create">Buscar Cancion.</Link>
+        </div>
+    );
+};
+
+
+
 
   
 
-        };
 
 
 
