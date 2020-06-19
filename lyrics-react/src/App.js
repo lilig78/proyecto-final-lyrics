@@ -9,7 +9,8 @@ import {
 import MainContainerv2 from './containers/MainContainerv2/MainContainerv2';
 import TaskContainer from './containers/TaskContainer/TaskContainer';
 import Container404 from './containers/Container404/Container404'
-import Lyrics from './containers/LyricsFind/LyricsFind'
+import LyricsFind from './containers/LyricsFind/LyricsFind';
+import Lyrics from './containers/Lyrics/Lyrics';
 import Inicio from './containers/Inicio/Inicio';
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
           <Route exact path="/">
             <Inicio/>
           </Route> 
-          <Route exact path="/test">
-            <Lyrics/>
+          <Route exact path="/lyrics">
+            <LyricsFind/>
           </Route>
           <Route exact path="/historial">
             <MainContainerv2/>
@@ -28,9 +29,13 @@ function App() {
           <Route path="/create">
             <TaskContainer/>
           </Route>
+          <Route exact path="/lyrics/:id">
+            <Lyrics/>
+          </Route>
           <Route path="*">
             <Container404 />
           </Route>
+          
       </Switch>
   </Router>
   );

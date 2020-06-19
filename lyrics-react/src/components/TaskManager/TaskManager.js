@@ -21,13 +21,14 @@ const TaskManager = () => {
     }, []);
 
     return (
-        <div className="card">
+        <div className="card margenes">
             <div className="card-body">
                 <h5 className="card-title">Mis Canciones</h5>
                 <h6 className="card-subtitle mb-2 text-muted">Escuchar</h6>
                 {
                     Object.keys(tasks)
                     .map((id) => <Task
+                    className="mx-4"
                     gT={getTasks}
                     key={id}
                     artist={tasks[id].artist} 
@@ -36,6 +37,7 @@ const TaskManager = () => {
                     lyrics={tasks[id].lyrics}
                     songtittle={tasks[id].songtittle}
                     id={id}
+                    isDetail = {false}
                     />)
                 }
             </div>

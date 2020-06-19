@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {
+  Link
+} from "react-router-dom";
 
-const Task = ({ id, artist, ranking, done, lyrics, songtittle, gT }) => {
+
+const Task = ({ id, artist, ranking, done, lyrics, songtittle, gT, isDetail}) => {
   const [ check, setCheck ] = useState(done);
   const url = `https://primercintaroja.firebaseio.com/task/${id}.json`;
 
@@ -19,13 +23,25 @@ const Task = ({ id, artist, ranking, done, lyrics, songtittle, gT }) => {
   const eliminar = () => {
     axios.delete(url)
     .then(()=>{
-      gT();
+      if (isDetail) {
+
+      }
+      else {
+        gT();
+      }
+      
     })
   };
 
   return (
-    <div className="card">
+    <div className="card px-4 py-2">
         <h4><span className="badge badge-primary">{ranking}</span> {artist}  {songtittle}.</h4>
+        {
+          isDetail
+          ?
+          <div> {lyrics} </div> 
+          : <Link to = {`/lyrics/${id}`}> Ver Cancion </Link>
+        }
         <div className="form-check">
           <input
           className="form-check-input" 
@@ -42,7 +58,7 @@ const Task = ({ id, artist, ranking, done, lyrics, songtittle, gT }) => {
             eliminar();
           }} className="btn btn-danger">Eliminar</button>
         </div>
-        {lyrics}
+        
         
     </div>
   );

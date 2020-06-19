@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "./NewTask.css";
 
 // function getNameById () {
 //     return axios.get('https://api.lyrics.ovh/v1/metallica/orion')
@@ -33,7 +34,7 @@ const NewTask = () => {
             && artist.length > 0) {
             var body = {
                 artist,
-                ranking,
+                ranking: parseInt(ranking),
                 isDone,
                 lyrics,
                 songtittle,
@@ -53,7 +54,7 @@ const NewTask = () => {
             //     this.response = response.data;
             //     console.log(this.response[0].name);
             // });
-            axios.get('https://api.lyrics.ovh/v1/metallica/master_of_puppets')
+            axios.get(`https://api.lyrics.ovh/v1/${artist}/${songtittle}`)
             .then(function (response) {
                 // handle success
                 // console.log(response.data.lyrics);
@@ -93,7 +94,7 @@ const NewTask = () => {
     };
     // const handleRanking = 0;
     const handleRanking = (event) => {
-        setRanking(0);
+        setRanking(event.target.value);
     };
     // const handleLyrics = (event) => {
     //     setLyrics(response.data.lyrics);
@@ -177,7 +178,7 @@ const NewTask = () => {
     // };
     
     return(
-    <div className="card">
+    <div className="card margenes" >
         <h4>Busca una nueva Cancion</h4>
         <div class="form-group">
             <label htmlFor="title">Ingrese nombre de artista:</label>
@@ -201,7 +202,7 @@ const NewTask = () => {
         <Link to="/"> Regresar a Inicio</Link>
 
 
-    { error ? <h1 class="text-danger">{error}</h1>: ''}
+    { error ? <h1 class="text-danger">{"No existe la cancion"}</h1>: ''}
 
     </div>)
 };
