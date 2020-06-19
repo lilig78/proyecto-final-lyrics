@@ -64,12 +64,12 @@ function App() {
           {/* aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" */}
           <input type="text" className="form-control"  onChange={handleChange} /> {/*handleChange se dispara el evento cada que se realice un cambio */}
         </div>
+
         <div className="row">
-         {/* {nomCancion.map(( cancion) => <Cancion nombre={cancion.nombre} album="Barrio Fino" cantante="Daddy Yankee" />) */}
-         {nomCancion.map((cancion) => <Cancion nombre={cancion.track.track_name} album={cancion.track.album_name} cantante={cancion.track.artist_name} rating={cancion.track.track_rating}/>)}
+         {/* {nomCancion.map(( cancion) => <Cancion nombre={cancion.nombre} album="Barrio Fino" cantante="Daddy Yankee" />)}  */}
+         {nomCancion.map((cancion) => <Cancion nombre={cancion.track.track_name} album={cancion.track.album_name} cantante={cancion.track.artist_name} />)}
           
-          
-          {/* <Card img="imagen" /> */}
+          <Card img="imagen" />
 
 
 
@@ -77,6 +77,7 @@ function App() {
           {/* {nomCancion.map(( nomCancion) => <Card nombre={nomCancion.title}  />)} */}
           {/* <Card img="imagen" /> */}
         </div>
+
       </div>
       {/* <FiltroCancion />
       <FiltroCancion /> */}
