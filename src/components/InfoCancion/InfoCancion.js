@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = (props) => {
+const InfoCancion = (props) => {
     return (
         <div  className="col-4">
             <div  className="card">
@@ -14,4 +14,4 @@ const Card = (props) => {
     )
 }
 
-export default Card;
+export default InfoCancion;
